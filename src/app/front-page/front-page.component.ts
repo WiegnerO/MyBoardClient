@@ -7,17 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontPageComponent implements OnInit {
 
-  newUser
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  login(value) {
-    console.log(value)
-  }
-
   
 
 }

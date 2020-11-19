@@ -1,0 +1,24 @@
+<h1 class="text-center">{{user.firstName}} {{user.lastName}}'s Profile</h1>
+<hr>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6" style="background-color: gold;">
+            <h3>User info</h3>
+            <hr>
+            <h6>UserName : </h6> {{user.userName}}
+            <h6>Name : </h6>
+            {{user.firstName}} {{user.lastName}}
+            <h6>About Me : </h6>
+            {{user.bio}}
+        </div>
+        <div class="col-sm-6" style="background-color: aquamarine;">
+            <h3>MyBoards</h3>
+            <hr>
+            <div *ngFor="let board of messageBoards">
+                {{board}}
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+  </div>

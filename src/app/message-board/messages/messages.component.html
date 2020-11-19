@@ -1,0 +1,7 @@
+<h3>Type in name</h3>
+<input [(ngModel)]="message.owner"  placeholder="name">
+<br>
+<h3>Type in message</h3>
+<textarea [(ngModel)]="message.text"  placeholder="Messages"></textarea>
+<br>
+<button (click)="post()" >POST</button>
