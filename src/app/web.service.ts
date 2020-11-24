@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
-import { Fourm } from './fourm.model'
+import { Fourm } from './fourm.model';
 
 
 @Injectable({
@@ -9,7 +8,7 @@ import { Fourm } from './fourm.model'
 })
 export class WebService {
 
-  BASE_URL = 'http://localhost:5000/api'
+  BASE_URL = 'http://localhost:5000/api';
 
 
   /**
