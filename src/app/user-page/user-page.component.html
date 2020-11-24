@@ -3,21 +3,49 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6" style="background-color: gold;">
-            <h3>User info</h3>
-            <hr>
+            <div class="text-center ">
+                <h3>User Info</h3>
+                <hr>
+            </div>
+
             <h6>UserName : </h6> {{user.userName}}
             <h6>Name : </h6>
             {{user.firstName}} {{user.lastName}}
             <h6>About Me : </h6>
             {{user.bio}}
+            <br>
+            <br>
         </div>
         <div class="col-sm-6" style="background-color: aquamarine;">
-            <h3>MyBoards</h3>
-            <hr>
-            <div *ngFor="let board of messageBoards">
-                {{board}}
+            <div class="text-center ">
+                <h3>MyBoards</h3>
+                <hr>
+            </div>
+            <div *ngFor="let board of MyBoards">
+                {{board.name}}
                 <br>
                 <br>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 " style="background-color: plum;">
+            <div class="text-center ">
+                <h3>Create new MyBoard</h3>
+                <hr>
+            </div>
+            <div>
+                <input
+                [(ngModel)]="newMyBoard"
+                type="text" 
+                class="form-control" 
+                placeholder="Create a new MyBoard fourm" 
+                required
+              />
+              <br>
+              <button type="button" (click) = "createNewMyBoard()" class="btn btn-primary">Create new MyBoard</button>
+              <br>
+              <br>
             </div>
         </div>
     </div>

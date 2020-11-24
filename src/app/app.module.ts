@@ -11,6 +11,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { MessageBoardPageComponent } from './message-board/message-board-page/message-board-page.component';
 import { MessagesComponent } from './message-board/messages/messages.component';
 import { MessageForumComponent } from './message-board/message-forum/message-forum.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MessageForumComponent } from './message-board/message-forum/message-for
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
