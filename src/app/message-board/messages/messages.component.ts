@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Message } from '../../message.model';
+import { WebService } from '../../web.service';
 
 @Component({
   selector: 'user-message',
@@ -7,18 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagesComponent implements OnInit {
 
-  message = {
+  @Output() messagePosted = new EventEmitter<Message>();
+
+  message : Message = {
     title : "",
-    text : ""
+    content : ""
   }
 
-  constructor() { }
+  constructor(private webService : WebService) { }
 
   ngOnInit(): void {
   }
 
   post() {
-    console.log(this.message);
+    this.webService.postMessage(this.message);
+    this.webService.emit<Message>(this.message);
   }
 
 }

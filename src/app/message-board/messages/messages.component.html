@@ -23,12 +23,12 @@
             class="form-control" 
             id="fourmMessage" 
             rows="3"
-            [(ngModel)]="message.text"  
+            [(ngModel)]="message.content"  
             placeholder="Write whats on your mind"
             >
             </textarea>    
           <br>
-          <button type="button"  class="btn btn-primary">Create new MyBoard</button>
+          <button type="button" (click)="post()"  class="btn btn-primary">Create new MyBoard</button>
           <br>
           <br>
         </div>
