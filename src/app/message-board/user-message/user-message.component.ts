@@ -4,8 +4,8 @@ import { WebService } from '../../web.service';
 
 @Component({
   selector: 'user-message',
-  templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css']
+  templateUrl: './user-message.component.html',
+  styleUrls: ['./user-message.component.css']
 })
 export class MessagesComponent implements OnInit {
 
@@ -13,7 +13,8 @@ export class MessagesComponent implements OnInit {
 
   message : Message = {
     title : "",
-    content : ""
+    content : "",
+    id : ""
   }
 
   constructor(private webService : WebService) { }
