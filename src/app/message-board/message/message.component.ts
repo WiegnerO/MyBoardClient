@@ -10,8 +10,13 @@ import { WebService } from '../../web.service';
 export class MessageForumComponent implements OnInit {
 
   constructor(private webSevice : WebService) { }
+  @Input() userMesaage : Message;
+  isDeleted : boolean = false;
 
   remove(): void {
+    let messageId = this.userMesaage.id;
+    this.webSevice.deleteMessage(messageId);
+    this.isDeleted = true;
   }
 
   ngOnInit(): void {

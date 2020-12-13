@@ -13,10 +13,6 @@ export class PostedMessagesComponent implements OnInit {
 
   constructor(private webSevice : WebService) { }
 
-  remove(): void {
-    
-  }
-
   ngOnInit(): void {
       this.webSevice.getMessages().subscribe(res =>{
       this.messages = res;

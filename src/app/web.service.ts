@@ -13,7 +13,6 @@ export class WebService {
   BASE_URL = 'http://localhost:5000/api';
 
   //adding to the fourm
-
   //To allow for sibling components within the messageBoard to communicate
   public _subject = new BehaviorSubject<any>('');
 
@@ -38,24 +37,19 @@ export class WebService {
    * this will later be personalized to a specific board but for now its for a single one 
    * @param message 
    */
-  postMessage(message) {
-      this.http.post(this.BASE_URL + '/messages' , message , {responseType: 'text'}).subscribe(res => {
-        console.log(res);
-      }, err => {
-        console.log(err);
-      })
+ postMessage(message) {
+    return this.http.post<Message>(this.BASE_URL + '/messages' , message );
   }
 
-  deleteMessgae(message) {
-    this.http.delete(this.BASE_URL + '/messages' , message).subscribe(res => {
-      console.log(res);
+  deleteMessage(message) {
+    this.http.delete<Message>(this.BASE_URL + '/messages/' + message).subscribe(res => {
+      console.log("This is the res : " + res);
     }, err => {
       console.log(err);
     })
   }
 
   //Creating Fourms
-
   /**
    * GET request to get all the users MyBoard fourm values 
    */

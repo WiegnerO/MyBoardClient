@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Message } from '../../message.model';
 import { WebService } from '../../web.service';
+import { FormControl , FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'user-message',
@@ -22,8 +23,13 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  post() {
-    this.webService.postMessage(this.message);
+  savePost(newMessageValue){
+    console.log(newMessageValue);
+    this.webService.postMessage(newMessageValue).subscribe((res)=>{
+      this.message.content = res.content;
+      this.message.title = res.title;
+      this.message.id = res.id;
+    })
     this.webService.emit<Message>(this.message);
   }
 
