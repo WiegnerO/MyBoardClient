@@ -3,14 +3,14 @@
 <div align="center">
   <form autocomplete="off" class="col-md-6" #newUserForm="ngForm" (ngSubmit)="login(newUserForm.value)">
       <div class="form-group">
-          <label for="userName">User Name:</label>
+          <label for="username">Username:</label>
               <input
-                (ngModel)="newUser.userName"
-                name="userName"
-                id="userName" 
+                (ngModel)="newUser.username"
+                name="username"
+                id="username" 
                 type="text" 
                 class="form-control" 
-                placeholder="User Name..." 
+                placeholder="Username..." 
                 required
               />
         </div>

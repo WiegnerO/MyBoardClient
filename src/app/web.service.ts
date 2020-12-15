@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Fourm } from './fourm.model';
 import { Message } from './message.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthenticationService } from './authentication-service.service'
 
 
 @Injectable({
@@ -29,7 +30,7 @@ export class WebService {
    * this will later be personalized to a specific board but for now its for a single one 
    */
   getMessages() {
-    return this.http.get<Message[]>(this.BASE_URL + '/messages');
+    return this.http.get<Message[]>(this.BASE_URL + '/messages' , {headers: this.auth.tokenHeader} );
   }
 
   /**
@@ -38,11 +39,11 @@ export class WebService {
    * @param message 
    */
  postMessage(message) {
-    return this.http.post<Message>(this.BASE_URL + '/messages' , message );
+    return this.http.post<Message>(this.BASE_URL + '/messages' , message , {headers: this.auth.tokenHeader} );
   }
 
   deleteMessage(message) {
-    this.http.delete<Message>(this.BASE_URL + '/messages/' + message).subscribe(res => {
+    this.http.delete<Message>(this.BASE_URL + '/messages/' + message , {headers: this.auth.tokenHeader}).subscribe(res => {
       console.log("This is the res : " + res);
     }, err => {
       console.log(err);
@@ -54,7 +55,7 @@ export class WebService {
    * GET request to get all the users MyBoard fourm values 
    */
   getFourmns() {
-    return this.http.get<Fourm[]>(this.BASE_URL + '/fourms');
+    return this.http.get<Fourm[]>(this.BASE_URL + '/fourms' , {headers: this.auth.tokenHeader});
   }
 
   /**
@@ -63,13 +64,13 @@ export class WebService {
    */
   postForum(message) {
     console.log(message);
-      this.http.post(this.BASE_URL + '/fourms' , message , {responseType: 'text'}).subscribe(res => {
+      this.http.post(this.BASE_URL + '/fourms' , message , {responseType: 'text' , headers: this.auth.tokenHeader}).subscribe(res => {
       }, err => {
         console.log(err);
       })
   }
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth : AuthenticationService) {
   }
 }

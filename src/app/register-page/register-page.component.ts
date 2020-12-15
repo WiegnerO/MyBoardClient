@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication-service.service';
 
 @Component({
   selector: 'app-register-page',
@@ -9,13 +10,13 @@ export class RegisterPageComponent implements OnInit {
 
   newUser
 
-  constructor() { }
+  constructor( private authService : AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
   login(value) {
-    console.log(value)
+    this.authService.registerUser(value);
   }
 
 }
