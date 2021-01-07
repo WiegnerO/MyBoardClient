@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Message } from '../../message.model';
-import { WebService } from '../../web.service';
-import { AuthenticationService } from '../../authentication-service.service';
+import { WebService } from '../../services/web.service';
+import { AuthenticationService } from '../../services/authentication-service.service';
 
 
 @Component({
@@ -19,13 +19,14 @@ export class MessagesComponent implements OnInit {
     content : "",
     Mid : "",
     Uid : localStorage.getItem(this.authService.USER_ID_KEY),
-    Bid : "2"
+    Bid : ""
   }
 
   constructor(private webService : WebService , private authService : AuthenticationService) { }
 
   ngOnInit(): void {
     console.log("hello user-message ", this.messageBoard);
+    this.message.Bid = this.messageBoard;
   }
 
   async savePost(newMessageValue){

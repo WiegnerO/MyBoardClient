@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from './user.model';
+import { User } from '../user.model';
 import { Router } from '@angular/router'
 
 @Injectable({
@@ -23,6 +23,10 @@ export class AuthenticationService {
   this.http.post<User>(this.BASE_URL + '/register' , user ).subscribe(res =>{
     return this.authenticate(res);
   });
+  }
+
+  isLoggedIn(){
+    return !!localStorage.getItem('token');
   }
 
   loginUser(user) {

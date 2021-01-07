@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Message } from 'src/app/message.model';
-import { WebService } from 'src/app/web.service';
+import { WebService } from 'src/app/services/web.service';
 
 @Component({
   selector: 'posted-messages',

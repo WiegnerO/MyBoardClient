@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Fourm } from '../fourm.model';
-import { WebService } from '../web.service';
-import { AuthenticationService } from '../authentication-service.service';
+import { WebService } from '../services/web.service';
+import { AuthenticationService } from '../services/authentication-service.service';
 
 
 @Component({

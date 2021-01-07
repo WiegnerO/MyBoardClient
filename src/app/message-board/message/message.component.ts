@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Message } from '../../message.model';
-import { WebService } from '../../web.service';
-import { AuthenticationService } from '../../authentication-service.service';
+import { WebService } from '../../services/web.service';
+import { AuthenticationService } from '../../services/authentication-service.service';
 
 @Component({
   selector: 'message',
