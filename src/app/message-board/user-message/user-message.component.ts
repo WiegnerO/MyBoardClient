@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Message } from '../../message.model';
 import { WebService } from '../../web.service';
-import { FormControl , FormGroup, Validators } from '@angular/forms'
+import { AuthenticationService } from '../../authentication-service.service';
+
 
 @Component({
   selector: 'user-message',
@@ -11,26 +12,33 @@ import { FormControl , FormGroup, Validators } from '@angular/forms'
 export class MessagesComponent implements OnInit {
 
   @Output() messagePosted = new EventEmitter<Message>();
+  @Input() private messageBoard:string; 
 
   message : Message = {
     title : "",
     content : "",
-    id : ""
+    Mid : "",
+    Uid : localStorage.getItem(this.authService.USER_ID_KEY),
+    Bid : "2"
   }
 
-  constructor(private webService : WebService) { }
+  constructor(private webService : WebService , private authService : AuthenticationService) { }
 
   ngOnInit(): void {
+    console.log("hello user-message ", this.messageBoard);
   }
 
-  savePost(newMessageValue){
-    console.log(newMessageValue);
-    this.webService.postMessage(newMessageValue).subscribe((res)=>{
-      this.message.content = res.content;
-      this.message.title = res.title;
-      this.message.id = res.id;
-    })
-    this.webService.emit<Message>(this.message);
+  async savePost(newMessageValue){
+    this.message.title = newMessageValue.title;
+    this.message.content = newMessageValue.content;
+    this.webService.postMessage(this.message).toPromise().then(res => {
+      console.log(res);
+      this.webService.emit<Message>(res);
+    });
   }
+
+
+
+
 
 }

@@ -8,7 +8,9 @@ import { AuthenticationService } from '../authentication-service.service'
 })
 export class NavigationBarComponent implements OnInit {
   AS : any;
-  constructor(private authService : AuthenticationService){}
+
+  constructor(private authService : AuthenticationService){
+  }
 
   ngOnInit(): void {
     this.AS = this.authService

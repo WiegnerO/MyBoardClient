@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Fourm } from '../fourm.model';
 import { WebService } from '../web.service';
+import { AuthenticationService } from '../authentication-service.service';
+
 
 @Component({
   selector: 'app-user-page',
@@ -21,9 +23,9 @@ export class UserPageComponent implements OnInit {
   newMyBoard : string;
   
 
-  constructor(private webSevice : WebService) { 
+  constructor(private webSevice : WebService, private authService : AuthenticationService) { 
     this.user.userName = "BobTheWarrior";
-    this.user.firstName = "Bob";
+    this.user.firstName = localStorage.getItem(this.authService.NAME_KEY);
     this.user.lastName = "Bobberson";
     this.user.bio = "Im a cool dude who likes to do cool dude things"
   }
@@ -36,6 +38,13 @@ export class UserPageComponent implements OnInit {
       this.webSevice.postForum(newMyBoardJSON);
       let newMyBoard = new Fourm(this.newMyBoard);
       this.MyBoards.push(newMyBoard);
+  }
+
+  updateProfile(){
+    //TODO add this feature
+    console.log(localStorage.getItem(this.authService.TOKEN_KEY));
+    console.log(localStorage.getItem(this.authService.USER_ID_KEY));
+    console.log(localStorage.getItem(this.authService.NAME_KEY));
   }
 
   /**

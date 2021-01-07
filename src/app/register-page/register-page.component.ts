@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication-service.service';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-register-page',
@@ -8,7 +9,7 @@ import { AuthenticationService } from '../authentication-service.service';
 })
 export class RegisterPageComponent implements OnInit {
 
-  newUser
+  newUser : any;
 
   constructor( private authService : AuthenticationService) { }
 

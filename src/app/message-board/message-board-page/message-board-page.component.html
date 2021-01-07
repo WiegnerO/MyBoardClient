@@ -1,2 +1,3 @@
-<user-message></user-message>
-<posted-messages></posted-messages>
+<h1>{{messageBoardName | titlecase}}</h1>
+<user-message [messageBoard]="messageBoardName"></user-message>
+<posted-messages [messageBoard]="messageBoardName"></posted-messages>

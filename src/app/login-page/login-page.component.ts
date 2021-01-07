@@ -8,7 +8,7 @@ import { AuthenticationService } from '../authentication-service.service'
 })
 export class LoginPageComponent implements OnInit {
 
-  user;
+  user : any;
 
   constructor( private authService : AuthenticationService) { }
 
@@ -16,7 +16,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   login(value) {
-    this.authService.loginUser(value)
+    let x = this.authService.loginUser(value)
+    console.log(x);
   }
 
 }
