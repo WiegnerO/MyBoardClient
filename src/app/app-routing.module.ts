@@ -16,8 +16,8 @@ const routes: Routes = [
   {path : 'userpage' , canActivate: [RouteGuardServiceLoggedIn], component : UserPageComponent},
   {path : 'loginPage' , canActivate: [RouteGuardServiceLoggedOut], component : LoginPageComponent},
   {path : 'registerPage', canActivate: [RouteGuardServiceLoggedOut], component : RegisterPageComponent},
-  {path : 'messageBoard', canActivate: [RouteGuardServiceLoggedIn], component : MessageBoardPageComponent},
-  {path : 'messageBoard/:Mid', canActivate: [RouteGuardServiceLoggedIn], component : MessageBoardPageComponent}
+  //{path : 'messageBoard', canActivate: [RouteGuardServiceLoggedIn], component : MessageBoardPageComponent},
+  {path : 'messageBoard/:Bid', canActivate: [RouteGuardServiceLoggedIn], component : MessageBoardPageComponent}
 ];
 
 @NgModule({

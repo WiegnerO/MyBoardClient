@@ -14,8 +14,8 @@ export class MessageBoardPageComponent implements OnInit {
   constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.messageBoardName = this.route.snapshot.params['Mid'];
-    console.log(this.messageBoardName)
+    this.messageBoardName = this.route.snapshot.params['Bid'];
+    console.log("This is the Boardid " +this.messageBoardName)
   }
 
   childMessageEvent(event){

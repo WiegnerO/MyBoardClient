@@ -9,10 +9,10 @@
         <a class="nav-link" href="loginPage">Login<span class="sr-only"></span></a>
       </li>
       <li class="nav-item active" *ngIf="(AS.isAuthenticated)">
-        <a class="nav-link" href="userpage"> {{AS.name}}'s Profile<span class="sr-only"></span></a>
+        <a class="nav-link" href="userpage">Profile<span class="sr-only"></span></a>
       </li>
       <li class="nav-item active" *ngIf="(AS.isAuthenticated)">
-        <a class="nav-link" href="messageBoard">messageBoard<span class="sr-only"></span></a>
+        <a class="nav-link" href="messageBoard">myBoards<span class="sr-only"></span></a>
       </li>
       <li class="nav-item active" *ngIf="(AS.isAuthenticated)">
         <a class="nav-link" href="loginPage" (click)="logout()">Logout<span class="sr-only"></span></a>

@@ -29,8 +29,8 @@ export class WebService {
    * GET request to get all the messages of the generic board
    * this will later be personalized to a specific board but for now its for a single one 
    */
-  getMessages() {
-    return this.http.get<Message[]>(this.BASE_URL + '/messages' , {headers: this.auth.tokenHeader} );
+  getMessages(Bid) {
+    return this.http.get<Message[]>(this.BASE_URL + '/messages/' + Bid , {headers: this.auth.tokenHeader} );
   }
 
   /**

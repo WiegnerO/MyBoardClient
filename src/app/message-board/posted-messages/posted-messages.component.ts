@@ -16,8 +16,7 @@ export class PostedMessagesComponent implements OnInit {
   constructor(private webSevice : WebService) { }
 
   ngOnInit(): void {
-    console.log("hello ", this.messageBoard);
-      this.webSevice.getMessages().subscribe(res =>{
+      this.webSevice.getMessages(this.messageBoard).subscribe(res =>{
       this.messages = res;
     })
     //This is used in order to append a new message to the message board

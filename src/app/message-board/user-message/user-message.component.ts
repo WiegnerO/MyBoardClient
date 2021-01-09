@@ -25,7 +25,6 @@ export class MessagesComponent implements OnInit {
   constructor(private webService : WebService , private authService : AuthenticationService) { }
 
   ngOnInit(): void {
-    console.log("hello user-message ", this.messageBoard);
     this.message.Bid = this.messageBoard;
   }
 
