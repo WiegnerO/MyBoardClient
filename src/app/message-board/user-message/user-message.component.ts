@@ -32,7 +32,6 @@ export class MessagesComponent implements OnInit {
     this.message.title = newMessageValue.title;
     this.message.content = newMessageValue.content;
     this.webService.postMessage(this.message).toPromise().then(res => {
-      console.log(res);
       this.webService.emit<Message>(res);
     });
   }

@@ -41,9 +41,8 @@ export class WebService {
   }
 
   deleteMessage(message) {
-    console.log(message)
-    this.http.delete<Message>(this.BASE_URL + '/messages/sports/' + message , {headers: this.auth.tokenHeader}).subscribe(res => {
-      console.log("This is the res : " + res);
+    this.http.delete<Message>(this.BASE_URL + '/messages/' + message.Bid + '/' + message.Mid , {headers: this.auth.tokenHeader}).subscribe(res => {
+      console.log(res);
     }, err => {
       console.log(err);
     })

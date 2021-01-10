@@ -17,8 +17,7 @@ export class MessageForumComponent implements OnInit {
   userId = localStorage.getItem(this.authService.USER_ID_KEY);
 
   remove(): void {
-    let messageId = this.userMesaage.Mid;
-    this.webSevice.deleteMessage(messageId);
+    this.webSevice.deleteMessage(this.userMesaage);
     this.isDeleted = true;
   }
 
