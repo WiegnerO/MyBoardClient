@@ -26,24 +26,23 @@ export class WebService {
   }
 
     /**
-   * GET request to get all the messages of the generic board
-   * this will later be personalized to a specific board but for now its for a single one 
+   * GET request to get all the messages of a specific board
    */
   getMessages(Bid) {
     return this.http.get<Message[]>(this.BASE_URL + '/messages/' + Bid , {headers: this.auth.tokenHeader} );
   }
 
   /**
-   * POST request to post a message to the generic board
-   * this will later be personalized to a specific board but for now its for a single one 
+   * POST request to post a message to a specific board
    * @param message 
    */
  postMessage(message) {
-    return this.http.post<Message>(this.BASE_URL + '/messages' , message , {headers: this.auth.tokenHeader} );
+    return this.http.post<Message>(this.BASE_URL + '/messages/' + message.Bid , message , {headers: this.auth.tokenHeader} );
   }
 
   deleteMessage(message) {
-    this.http.delete<Message>(this.BASE_URL + '/messages/' + message , {headers: this.auth.tokenHeader}).subscribe(res => {
+    console.log(message)
+    this.http.delete<Message>(this.BASE_URL + '/messages/sports/' + message , {headers: this.auth.tokenHeader}).subscribe(res => {
       console.log("This is the res : " + res);
     }, err => {
       console.log(err);
