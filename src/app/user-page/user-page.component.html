@@ -15,14 +15,19 @@
             {{user.bio}}
             <br>
             <br>
+            <button type="button" (click) ="updateProfile()" class="btn btn-primary">Update Profile</button>
+            <br>
+            <br>
         </div>
         <div class="col-sm-6" style="background-color: aquamarine;">
-            <div class="text-center ">
+            <div class="text-center">
                 <h3>MyBoards</h3>
                 <hr>
             </div>
             <div *ngFor="let board of MyBoards">
-                {{board.name}}
+                <button routerLink="/messageBoard/{{board.name}}" class="btn btn-primary" routerLinkActive="active">
+                    {{board.name}}
+                </button>
                 <br>
                 <br>
             </div>

@@ -1,0 +1,40 @@
+<form #newPost="ngForm" (ngSubmit)="savePost(newPost.value); newPost.reset()" autocomplete="off">
+  <div class="row">
+      <div class="col-sm-12 " style="background-color: plum;">
+          <div class="text-center ">
+              <h3>Create new message</h3>
+              <hr>
+          </div>
+          <div>
+              <label for="fourmMessageTitle">Title</label>
+              <textarea 
+              class="form-control"
+              type="text"
+              rows="1"
+              id="fourmMessageTitle" 
+              (ngModel)="message.title" 
+              name="title"
+              placeholder="Want to give your post a title?"
+              >
+              </textarea>
+            <br>
+          </div>
+          <div>
+              <label for="fourmMessage">Message</label>
+              <textarea 
+              class="form-control" 
+              id="fourmMessage" 
+              rows="3"
+              name="content"
+              (ngModel)="message.content"
+              placeholder="Write whats on your mind"
+              >
+              </textarea>    
+            <br>
+            <button type="submit" class="btn btn-primary">Create new MyBoard</button>
+            <br>
+            <br>
+          </div>
+      </div>
+  </div>
+</form>

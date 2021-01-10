@@ -9,9 +9,10 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { MessageBoardPageComponent } from './message-board/message-board-page/message-board-page.component';
-import { MessagesComponent } from './message-board/messages/messages.component';
-import { MessageForumComponent } from './message-board/message-forum/message-forum.component';
+import { MessagesComponent } from './message-board/user-message/user-message.component';
+import { MessageForumComponent } from './message-board/message/message.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostedMessagesComponent } from './message-board/posted-messages/posted-messages.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterPageComponent,
     MessageBoardPageComponent,
     MessagesComponent,
-    MessageForumComponent
+    MessageForumComponent,
+    PostedMessagesComponent
   ],
   imports: [
     BrowserModule,
