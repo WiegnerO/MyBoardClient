@@ -16,8 +16,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   login(value) {
-    let x = this.authService.loginUser(value)
-    console.log(x);
+    this.authService.loginUser(value)
   }
 
 }

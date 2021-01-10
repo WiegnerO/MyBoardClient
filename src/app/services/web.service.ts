@@ -60,11 +60,11 @@ export class WebService {
 
   /**
    * POST request to add a new MyBoard fourm
-   * @param message 
+   * @param fourm
    */
-  postForum(message) {
-    console.log(message);
-      this.http.post(this.BASE_URL + '/fourms' , message , {responseType: 'text' , headers: this.auth.tokenHeader}).subscribe(res => {
+  postForum(forum) {
+      this.http.post(this.BASE_URL + '/fourms' , forum , {headers: this.auth.tokenHeader})
+      .subscribe(res => {
       }, err => {
         console.log(err);
       })

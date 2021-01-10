@@ -17,6 +17,7 @@ export class RegisterPageComponent implements OnInit {
   }
 
   login(value) {
+    console.log("form value " + value)
     this.authService.registerUser(value);
   }
 
