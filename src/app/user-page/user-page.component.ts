@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Fourm } from '../fourm.model';
-import { WebService } from '../services/web.service';
+import { WebForumService } from '../services/web-forum.service';
 import { AuthenticationService } from '../services/authentication-service.service';
 
 
@@ -23,7 +23,7 @@ export class UserPageComponent implements OnInit {
   newMyBoard : string;
   
 
-  constructor(private webSevice : WebService, private authService : AuthenticationService) { 
+  constructor(private webSevice : WebForumService, private authService : AuthenticationService) { 
     this.user.userName = "BobTheWarrior";
     this.user.firstName = localStorage.getItem(this.authService.NAME_KEY);
     this.user.lastName = "Bobberson";
