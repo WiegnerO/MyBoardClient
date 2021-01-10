@@ -1,19 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Welcome to MyBoard</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="registerPage">Register<span class="sr-only"></span></a>
-          </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="loginPage">Login<span class="sr-only"></span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="userpage">Profile<span class="sr-only"></span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="messageBoard">messageBoard<span class="sr-only"></span></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <a class="navbar-brand" href="#">Welcome to MyBoard</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active" *ngIf="!(AS.isAuthenticated)">
+        <a class="nav-link" href="registerPage">Register<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active" *ngIf="!(AS.isAuthenticated)">
+        <a class="nav-link" href="loginPage">Login<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active" *ngIf="(AS.isAuthenticated)">
+        <a class="nav-link" href="userpage">Profile<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active" *ngIf="(AS.isAuthenticated)">
+        <a class="nav-link" href="messageBoard">myBoards<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active" *ngIf="(AS.isAuthenticated)">
+        <a class="nav-link" href="loginPage" (click)="logout()">Logout<span class="sr-only"></span></a>
+      </li>
+    </ul>
+  </div>
+</nav>

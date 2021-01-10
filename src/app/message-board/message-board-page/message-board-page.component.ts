@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-message-board-page',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageBoardPageComponent implements OnInit {
 
-  constructor() { }
+  public clickedEvent : Event;
+  public messageBoardName;
+
+  constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.messageBoardName = this.route.snapshot.params['Bid'];
+    console.log("This is the Boardid " +this.messageBoardName)
+  }
+
+  childMessageEvent(event){
+    this.clickedEvent = event;
   }
 
 }

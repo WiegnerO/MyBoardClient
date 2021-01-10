@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../services/authentication-service.service';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-register-page',
@@ -7,15 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterPageComponent implements OnInit {
 
-  newUser
+  newUser : any;
 
-  constructor() { }
+  constructor( private authService : AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
   login(value) {
-    console.log(value)
+    console.log("form value " + value)
+    this.authService.registerUser(value);
   }
 
 }
