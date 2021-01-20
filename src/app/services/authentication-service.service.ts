@@ -19,11 +19,7 @@ export class AuthenticationService {
    * @param message 
    */
  registerUser(user) {
-  //TODO update this feature
-  console.log("user input ");
-  console.log(user)
   this.http.post<User>(this.BASE_URL + '/register' , user ).subscribe(res =>{
-    console.log("res output " + res)
     return this.authenticate(res);
   });
   }

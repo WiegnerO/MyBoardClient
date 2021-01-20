@@ -13,8 +13,7 @@ export class UserPageComponent implements OnInit {
 
   user = {
     userName : "",
-    firstName : "",
-    lastName : "",
+    name : "",
     bio : ""
   };
 
@@ -25,8 +24,7 @@ export class UserPageComponent implements OnInit {
 
   constructor(private webSevice : WebForumService, private authService : AuthenticationService) { 
     this.user.userName = "BobTheWarrior";
-    this.user.firstName = localStorage.getItem(this.authService.NAME_KEY);
-    this.user.lastName = "Bobberson";
+    this.user.name = localStorage.getItem(this.authService.NAME_KEY);
     this.user.bio = "Im a cool dude who likes to do cool dude things"
   }
 
@@ -34,14 +32,17 @@ export class UserPageComponent implements OnInit {
    * Lets you add a new MyBoard fourm page
    */
   createNewMyBoard() {
-      let newMyBoardJSON = {name : this.newMyBoard};
-      this.webSevice.postForum(newMyBoardJSON);
-      let newMyBoard = new Fourm(this.newMyBoard);
-      this.MyBoards.push(newMyBoard);
+      let newMyBoardJSON = {board_name : this.newMyBoard , creator_id : parseInt(localStorage.getItem(this.authService.USER_ID_KEY))};
+      this.webSevice.postBoard(newMyBoardJSON)
+      .subscribe( () => {
+        let newMyBoard = new Fourm(this.newMyBoard , parseInt(this.authService.USER_ID_KEY));
+        this.MyBoards.push(newMyBoard);
+      }, err => {
+        console.log(err);
+      })
   }
 
   updateProfile(){
-    //TODO add this feature
     console.log(localStorage.getItem(this.authService.TOKEN_KEY));
     console.log(localStorage.getItem(this.authService.USER_ID_KEY));
     console.log(localStorage.getItem(this.authService.NAME_KEY));
@@ -51,7 +52,8 @@ export class UserPageComponent implements OnInit {
    * Current retrives all MyBoard foumr pages but will only retrive the MyBoard fourm page that the user has created or commented on
    */
   ngOnInit(): void {
-    this.webSevice.getFourmns().subscribe(res =>{
+    this.webSevice.getBoard().subscribe(res =>{
+      console.log(res);
       this.MyBoards =  res;
     })
   }
