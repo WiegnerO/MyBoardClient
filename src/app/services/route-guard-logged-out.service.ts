@@ -15,5 +15,5 @@ export class RouteGuardServiceLoggedOut implements CanActivate {
       }
     }
 
-  constructor(private router: Router, private auth : AuthenticationService ) { }
+  constructor(private router: Router, private auth: AuthenticationService ) { }
 }

@@ -90,6 +90,7 @@ export class UserPageComponent implements OnInit {
     const userId = {
       id: localStorage.getItem('id')
     };
+    //give userID to get
     this.webUserService.getMyBoardsUser(userId).subscribe(res => {
       this.user.userName = res[0].username;
       this.user.about_user = res[0].about_user === null || res[0].about_user === '' ? this.USER_MESSAGE : res[0].about_user;

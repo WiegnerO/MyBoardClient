@@ -22,5 +22,9 @@ export class WebUserService {
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.BASE_URL + '/auth' , {headers: this.auth.tokenHeader} );
   }
+
+  deleteUser(userID): Observable<any> {
+    return this.http.delete(this.BASE_URL + '/auth/' + userID , {headers: this.auth.tokenHeader});
+  }
   constructor( private http: HttpClient, private auth: AuthenticationService ) { }
 }

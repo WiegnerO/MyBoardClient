@@ -63,6 +63,9 @@ export class AuthenticationService {
   get name(): string{
     return localStorage.getItem(this.NAME_KEY);
   }
+  get id(): string{
+    return localStorage.getItem(this.USER_ID_KEY);
+  }
 
   get tokenHeader(): HttpHeaders{
     const header = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem(this.TOKEN_KEY)});

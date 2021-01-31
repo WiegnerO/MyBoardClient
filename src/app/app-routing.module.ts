@@ -8,7 +8,9 @@ import { MessageBoardPageComponent } from './message-board/message-board-page/me
 import { AllBoardsComponent } from './all-boards/all-boards.component';
 import { RouteGuardServiceLoggedIn } from './services/route-guard.service';
 import { RouteGuardServiceLoggedOut } from './services/route-guard-logged-out.service';
+import { RouteGaurdAdminService } from './services/route-gaurd-admin.service';
 import { AllUsersComponent } from './all-users/all-users.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 let homePage: string = !!localStorage.getItem('token') ? 'userpage' : '/loginPage';
 
@@ -20,7 +22,8 @@ const routes: Routes = [
   {path : 'registerPage', canActivate: [RouteGuardServiceLoggedOut], component : RegisterPageComponent},
   {path : 'messageBoard', canActivate: [RouteGuardServiceLoggedIn], component : AllBoardsComponent},
   {path : 'messageBoard/:Bname', canActivate: [RouteGuardServiceLoggedIn], component : MessageBoardPageComponent},
-  {path : 'allUsers', canActivate: [RouteGuardServiceLoggedIn], component : AllUsersComponent}
+  {path : 'allUsers', canActivate: [RouteGuardServiceLoggedIn], component : AllUsersComponent},
+  {path : 'admin', canActivate: [RouteGuardServiceLoggedIn, RouteGaurdAdminService], component : AdminPageComponent}
 ];
 
 @NgModule({

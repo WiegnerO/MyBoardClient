@@ -1,0 +1,27 @@
+<h1>Users</h1>
+<div *ngFor="let user of MyBoardUsers" class="col-sm-4 py-2">
+  <button (click)="deleteUser(user)">
+    {{user.id}}<br>
+    {{user.username}}
+  </button>
+</div>
+
+<h1>Messages</h1>
+<div class="container-fluid d-flex flex-wrap">
+  <div *ngFor="let m of messages" class="col-sm-4 py-2">
+    <button (click)="deleteMessage(m)">
+      message: {{m.id}}<br>
+      Content : {{m.post_content}}<br>
+      reply to: {{m.parent_message}}
+    </button>
+  </div>
+</div>
+
+<h1>Boards</h1>
+<div class="container-fluid d-flex flex-wrap">
+  <div class="col-sm-4 py-2" *ngFor="let board of MyBoards" >
+    <button (click)="deleteBoard(board)">
+      {{board.board_name}}
+    </button>
+  </div>
+</div>

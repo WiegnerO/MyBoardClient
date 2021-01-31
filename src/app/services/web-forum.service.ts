@@ -49,6 +49,6 @@ export class WebForumService {
     return this.http.delete(this.BASE_URL + '/boards/' + boardID , {headers: this.auth.tokenHeader});
   }
 
-  constructor(private http: HttpClient, private auth : AuthenticationService) {
+  constructor(private http: HttpClient, private auth: AuthenticationService) {
   }
 }

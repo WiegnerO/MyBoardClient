@@ -11,20 +11,37 @@ import { WebUserService } from '../../services/web-user.service';
 })
 export class MessageForumComponent implements OnInit {
 
-  constructor(private webSevice: WebService, private authService: AuthenticationService, private webUserService: WebUserService) { }
+  constructor(private webService: WebService, private authService: AuthenticationService, private webUserService: WebUserService) { }
   @Input() userMesaage: Message;
   userName;
-  replyMessages;
+  replyMessages: Message[];
+  replyBox = false;
+  buttonText = 'Reply';
+  replyMessageValue: Message;
+  replyTitle;
+  replyContent;
 
   isDeleted = false;
   userId = localStorage.getItem(this.authService.USER_ID_KEY);
 
-  reply():void {
+  Openreply(): void {
+    this.replyBox = ! this.replyBox;
+  }
 
+  reply(): void {
+    this.replyMessageValue = new Message(this.userMesaage.board_id , this.userMesaage.id);
+    this.replyMessageValue.post_title = this.userMesaage.post_title;
+    this.replyMessageValue.post_content = this.replyContent;
+    this.webService.postMessage(this.replyMessageValue).toPromise().then((res) => {
+      this.replyMessageValue.id = res;
+      this.replyMessages.push(this.replyMessageValue);
+      this.replyBox = ! this.replyBox;
+      this.replyMessageValue = new Message(this.userMesaage.board_id , this.userMesaage.id);
+    });
   }
 
   remove(): void {
-    this.webSevice.deleteMessage(this.userMesaage);
+    this.webService.deleteMessage(this.userMesaage);
     this.isDeleted = true;
   }
 
@@ -33,8 +50,17 @@ export class MessageForumComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.webUserService.getMyBoardsUser(this.userMesaage).subscribe(res => {
-      this.userName = res[0].username;
+    const userId = {
+      id: this.userMesaage.creator_id
+    };
+    this.webUserService.getMyBoardsUser(userId).subscribe(res => {
+      if (res[0]){
+        this.userName = res[0].username;
+      }
+    });
+
+    this.webService.getReplies(this.userMesaage.id).subscribe(res => {
+      this.replyMessages = res;
     });
   }
 }

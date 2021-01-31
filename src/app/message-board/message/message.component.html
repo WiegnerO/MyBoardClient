@@ -2,21 +2,47 @@
     <br>
     <div class="card">
         <div class="card-header d-flex card-header-background" >
-            <div class="mr-auto p-2">
-                <h4>{{userMesaage.post_title}}</h4>
+            <div class="mr-auto p-2" style="padding-top: 12px">
+                <h6>{{userMesaage.post_title}}</h6>
             </div>
-            <div [hidden] = "!isUsersPost()">
+            <div [hidden] = "!isUsersPost()" style="padding-top: 12px">
                 Posted by: {{ userName }}
             </div>
           <div class="p-2">
-            <button class="justify-content-end" type="button" class="btn btn-primary" (click)="reply()">Reply</button>
+            <button class="justify-content-end" type="button" class="btn btn-primary btn-sm" (click)="Openreply()">{{buttonText}}</button>
           </div>
             <div class="p-2" [hidden] = "isUsersPost()">
-                <button class="justify-content-end" type="button" class="btn btn-danger" (click)="remove()">Delete Post</button>
+                <button class="justify-content-end" type="button" class="btn btn-danger btn-sm" (click)="remove()">Delete Post</button>
             </div>
         </div>
         <div ng class="card-body card-body-background" >
             <p class="card-text">{{ userMesaage.post_content }}</p>
         </div>
+    </div>
+  <div *ngIf="replyBox" style="padding-left: 50px;">
+    <br>
+    <div ng class="card-body card-body-background">
+
+
+      <div class="container-fluid">
+        <div class="row">
+          <div style="padding-top: 12px">
+            <b>Message : </b>
+          </div>
+          <div class="col-sm-10 py-2">
+            <input [(ngModel)]="replyContent" class="form-control">
+          </div>
+          <div class="col-sm-1" style="padding-top: 12px">
+            <button type="button" class="btn btn-primary btn-sm" (click)="reply()"> Post
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div *ngIf="replyMessages && replyMessages.length > 0" style="padding-left: 50px;">
+      <div *ngFor="let message of replyMessages">
+        <message [userMesaage]=message ></message>
+      </div>
     </div>
 </div>

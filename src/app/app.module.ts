@@ -16,6 +16,7 @@ import { PostedMessagesComponent } from './message-board/posted-messages/posted-
 import { AllBoardsComponent } from './all-boards/all-boards.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { UserProfileComponent } from './all-users/user-profile/user-profile.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { UserProfileComponent } from './all-users/user-profile/user-profile.comp
     PostedMessagesComponent,
     AllBoardsComponent,
     AllUsersComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AdminPageComponent,
   ],
     imports: [
         BrowserModule,

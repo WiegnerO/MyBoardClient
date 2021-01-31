@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Message } from '../../message.model';
 import { WebService } from '../../services/web.service';
-import { AuthenticationService } from '../../services/authentication-service.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
@@ -41,7 +40,8 @@ export class MessagesComponent implements OnInit {
         post_content : newMessageValue.post_content,
         id : res,
         creator_id : parseInt(localStorage.getItem('id')),
-        board_id : this.messageBoard
+        board_id : this.messageBoard,
+        parent_message : null
       };
       this.postError = false;
       this.webService.emit<Message>(x);
