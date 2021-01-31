@@ -6,8 +6,8 @@ MyBoard is a web application allowing users to create message boards also known 
 
 # MyBoard functions
 This application allows users to: <br>
-- Login and register in the application
-- Create and update their user profile
+- Login and register an account
+- Create and update their user personal user profile
 - Create and delete new MyBoards 
 - Search new MyBoard pages
 - Search MyBoard users
