@@ -1,0 +1,31 @@
+<div>
+  <div class="">
+    <div class="text-center card-header card-header-background">
+      <h5>User : {{user.username | titlecase}}</h5>
+    </div>
+    <div class="card-body card-body-background h-100">
+      <div class="row">
+        <div style="padding-left: 10px;">
+          <div *ngIf="user.about_user">
+            <b>About {{user.first_name | titlecase}} : </b> <span> &nbsp; {{user.about_user}}</span>
+            <br>
+            <br>
+          </div>
+          <div *ngIf="MyBoards.length > 0">
+            <b>{{user.first_name | titlecase}}'s MyBoards : </b>
+            <div class="container-fluid d-flex flex-wrap">
+              <div *ngFor="let board of MyBoards" style="padding: 2.5px;">
+                <button routerLink="/messageBoard/{{board.board_name}}" class="btn btn-sm"
+                        style="background-color: 	#E6E6FA;" routerLinkActive="active">
+                  {{board.board_name | titlecase}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+

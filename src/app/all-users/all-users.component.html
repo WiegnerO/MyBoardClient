@@ -1,0 +1,11 @@
+<br>
+<h3 class="text-center">MyBoard Users</h3>
+<br>
+<div class="container-fluid d-flex flex-wrap">
+  <div *ngFor="let user of MyBoardUsers" class="col-sm-4 py-2">
+    <div class="card h-100 card-body-background">
+      <app-user-profile [user]=user></app-user-profile>
+    </div>
+  </div>
+</div>
+

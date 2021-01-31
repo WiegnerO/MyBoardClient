@@ -1,0 +1,59 @@
+<div class="col-sm-12">
+  <br>
+  <div class="d-flex flex-row justify-content-center">
+    <h3>
+      Search a specific MyBoard
+    </h3>
+  </div>
+    <div class="container">
+        <div class="row justify-content-center">
+                            <div class="col-12 col-md-10 col-lg-8">
+                                <form class="card-sm">
+                                    <div class="card-body row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-search h4 text-body"></i>
+                                        </div>
+
+                                        <div class="col">
+                                            <input class="form-control form-control-lg form-control-borderless" placeholder="Search for a MyBoard" name="search" #myBoard>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="btn btn-lg btn-primary" type="submit" (click)='findBoards(myBoard.value)'>Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+    </div>
+
+    <div *ngIf="specificBoards" class="d-flex flex-row justify-content-center">
+      <h3>
+        MyBoards Matching : {{myBoard.value}}
+      </h3>
+    </div>
+    <br>
+    <div class="d-flex flex-row justify-content-center">
+        <div *ngFor="let board of specificBoards" class="elem">
+            <button routerLink="/messageBoard/{{board.board_name}}" class="btn btn-primary" routerLinkActive="active">
+                {{board.board_name | titlecase}}
+            </button>
+            <br>
+        </div>
+    </div>
+    <br>
+  <div class="d-flex flex-row justify-content-center">
+    <h3>
+      Available MyBoards
+    </h3>
+  </div>
+  <br>
+    <div class="d-flex flex-row justify-content-center">
+        <div class="elem" *ngFor="let board of MyBoards">
+            <button routerLink="/messageBoard/{{board.board_name}}" class="btn btn-primary" routerLinkActive="active">
+                {{board.board_name | titlecase}}
+            </button>
+            <br>
+            <br>
+        </div>
+    </div>`
+</div>
