@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../services/authentication-service.service'
+import { AuthenticationService } from '../services/authentication-service.service';
+import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -8,15 +9,49 @@ import { AuthenticationService } from '../services/authentication-service.servic
 })
 export class LoginPageComponent implements OnInit {
 
-  user : any;
+  loginForm: FormGroup;
+  submittedUsername = false;
+  submittedPassword = false;
+  missMatchedPassword = false;
 
-  constructor( private authService : AuthenticationService) { }
+  constructor( private authService: AuthenticationService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
-  login(value) {
-    this.authService.loginUser(value)
+  get f(): any {
+    return this.loginForm.controls;
+  }
+
+  onClick(): void {
+    this.submittedUsername = true;
+    this.submittedPassword = true;
+  }
+
+  resetUsername(): void{
+  this.submittedUsername = false;
+}
+
+  resetPassword(): void{
+    this.submittedPassword = false;
+  }
+
+  onSubmit(): void {
+    if (this.f.password.errors || this.f.username.errors){
+      return;
+    }
+    this.submittedPassword = false;
+    this.authService.loginUser(this.loginForm.value)
+      .then( res => {
+        return this.authService.authenticate(res);
+      })
+      .catch( err => {
+        this.submittedPassword = true;
+      });
   }
 
 }

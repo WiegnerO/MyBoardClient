@@ -6,8 +6,7 @@ import { AuthenticationService } from './authentication-service.service';
   providedIn: 'root'
 })
 export class RouteGuardServiceLoggedOut implements CanActivate {
-  
-  canActivate() {
+  canActivate(): boolean {
     if (!this.auth.isLoggedIn()) {
         return true;
     }else{

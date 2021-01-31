@@ -1,57 +1,75 @@
-<h1 class="text-center">{{user.name}} Profile</h1>
-<hr>
+<br>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-6" style="background-color: gold;">
-            <div class="text-center ">
-                <h3>User Info</h3>
-                <hr>
+        <div class="col-sm-6 py-2">
+          <div class="card h-100">
+            <div class="text-center card-header card-header-background">
+              <h3>User Info</h3>
             </div>
-
-            <h6>UserName : </h6> {{user.userName}}
-            <h6>Name : </h6>
-            {{user.name}}
-            <h6>About Me : </h6>
-            {{user.bio}}
-            <br>
-            <br>
-            <button type="button" (click) ="updateProfile()" class="btn btn-primary">Update Profile</button>
-            <br>
-            <br>
+            <div class="card-body card-body-background">
+              <div>
+                <h6>UserName : </h6> {{user.userName}}
+              </div>
+              <br>
+              <div>
+                <h6>Name : </h6> {{user.name | titlecase}}
+              </div>
+              <br>
+              <div>
+                <h6>About Me : </h6>
+                <div *ngIf="toggle" (click)="toggler()">
+                  {{user.about_user}}
+                </div>
+                <div *ngIf="!toggle">
+                      <textarea class="form-control"  rows="3" name="post_content"
+                                [(ngModel)]="user.about_user" placeholder="Write about yourself">
+                    </textarea>
+                </div>
+              </div>
+              <br>
+              <button *ngIf="toggle" type="button" (click)="toggler()" class="btn btn-primary">Update about me</button>
+              <button *ngIf="!toggle" type="button" (click)="updateProfile()" class="btn btn-primary">Save</button>
+              <br>
+              <br>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-6" style="background-color: aquamarine;">
-            <div class="text-center">
-                <h3>MyBoards</h3>
-                <hr>
+
+        <div class="col-sm-6 py-2">
+          <div class="card h-100">
+            <div class="text-center card-header card-header-background">
+              <h3>MyBoards</h3>
             </div>
-            <div *ngFor="let board of MyBoards">
-                <button routerLink="/messageBoard/{{board.board_name}}" class="btn btn-primary" routerLinkActive="active">
-                    {{board.board_name}}
-                </button>
-                <br>
-                <br>
+            <div class="card-body card-body-background">
+              <div *ngFor="let board of MyBoards">
+                <div class="d-flex">
+                  <div class="mr-auto p-2">
+                    <button routerLink="/messageBoard/{{board.board_name}}" class="btn btn-primary" routerLinkActive="active">
+                      {{board.board_name | titlecase}}
+                    </button>
+                  </div>
+                  <div class="p-2">
+                    <button type="button" (click)="deleteBoard(board.id)" class="btn btn-danger">Delete MyBoard</button>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
     </div>
+  <br>
     <div class="row">
-        <div class="col-sm-12 " style="background-color: plum;">
-            <div class="text-center ">
-                <h3>Create new MyBoard</h3>
-                <hr>
-            </div>
-            <div>
-                <input
-                [(ngModel)]="newMyBoard"
-                type="text" 
-                class="form-control" 
-                placeholder="Create a new MyBoard fourm" 
-                required
-              />
-              <br>
-              <button type="button" (click) = "createNewMyBoard()" class="btn btn-primary">Create new MyBoard</button>
-              <br>
-              <br>
-            </div>
-        </div>
+      <div class="col-sm-12">
+          <div class="text-center card-header card-header-background">
+              <h3>Create new MyBoard</h3>
+          </div>
+          <div class="card-body card-body-background">
+              <input [(ngModel)]="newMyBoard" type="text" class="form-control"
+                     placeholder="Create a new MyBoard fourm" required/>
+            <br>
+            <button type="button" (click) = "createNewMyBoard()" class="btn btn-primary">Create new MyBoard</button>
+          </div>
+      </div>
     </div>
   </div>
+

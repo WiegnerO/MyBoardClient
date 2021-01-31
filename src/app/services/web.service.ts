@@ -13,42 +13,40 @@ export class WebService {
 
   BASE_URL = 'http://localhost:5000/api';
 
-  //adding to the fourm
-  //To allow for sibling components within the messageBoard to communicate
   public _subject = new BehaviorSubject<any>('');
 
   emit<T>(data: T){
-    this._subject.next(data)
+    this._subject.next(data);
   }
 
   on<T>(): Observable<T>{
     return this._subject.asObservable();
   }
 
-    /**
+  /**
    * GET request to get all the messages of a specific board
    */
-  getMessages(Bid) {
+  getMessages(Bid): Observable<Message[]> {
     return this.http.get<Message[]>(this.BASE_URL + '/messages/' + Bid , {headers: this.auth.tokenHeader} );
   }
 
   /**
    * POST request to post a message to a specific board
-   * @param message 
+   * @param message
    */
- postMessage(message) {
-    return this.http.post<Message>(this.BASE_URL + '/messages/' + message.Bid , message , {headers: this.auth.tokenHeader} );
+  postMessage(message): Observable<number> {
+    return this.http.post<number>(this.BASE_URL + '/messages' , message , {headers: this.auth.tokenHeader} );
   }
 
-  deleteMessage(message) {
-    this.http.delete<Message>(this.BASE_URL + '/messages/' + message.Bid + '/' + message.Mid , {headers: this.auth.tokenHeader}).subscribe(res => {
+  deleteMessage(message): void {
+    this.http.delete<Message>(this.BASE_URL + '/messages/' + message.id , {headers: this.auth.tokenHeader}).subscribe(res => {
       console.log(res);
     }, err => {
       console.log(err);
-    })
+    });
   }
 
 
-  constructor(private http: HttpClient, private auth : AuthenticationService) {
+  constructor(private http: HttpClient, private auth: AuthenticationService) {
   }
 }

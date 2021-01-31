@@ -7,16 +7,16 @@ import { AuthenticationService } from '../services/authentication-service.servic
   styleUrls: ['./navigation-bar.component.css']
 })
 export class NavigationBarComponent implements OnInit {
-  AS : any;
+  AS: any;
 
-  constructor(private authService : AuthenticationService){
+  constructor(private authService: AuthenticationService){
   }
 
   ngOnInit(): void {
-    this.AS = this.authService
+    this.AS = this.authService;
   }
 
-  logout(){
+  logout(): void{
     this.AS.logout();
   }
 

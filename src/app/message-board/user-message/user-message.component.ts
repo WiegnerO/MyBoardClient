@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Message } from '../../message.model';
 import { WebService } from '../../services/web.service';
 import { AuthenticationService } from '../../services/authentication-service.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -12,28 +13,42 @@ import { AuthenticationService } from '../../services/authentication-service.ser
 export class MessagesComponent implements OnInit {
 
   @Output() messagePosted = new EventEmitter<Message>();
-  @Input() private messageBoard:string; 
+  @Input() private messageBoard;
+  boardMessage: FormGroup;
+  postError = false;
+  public message: Message ;
 
-  message : Message = {
-    title : "",
-    content : "",
-    Mid : "",
-    Uid : localStorage.getItem(this.authService.USER_ID_KEY),
-    Bid : ""
-  }
-
-  constructor(private webService : WebService , private authService : AuthenticationService) { }
+  constructor(private webService: WebService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.message.Bid = this.messageBoard;
+    this.message = new Message(parseInt(this.messageBoard));
+    this.boardMessage = this.fb.group({
+      post_title: ['', Validators.required],
+      post_content: ['', Validators.required]
+    });
   }
 
-  async savePost(newMessageValue){
-    this.message.title = newMessageValue.title;
-    this.message.content = newMessageValue.content;
+  get f(): any {
+    return this.boardMessage.controls;
+  }
+
+  savePost(newMessageValue): void{
+    this.message.post_title = newMessageValue.post_title;
+    this.message.post_content = newMessageValue.post_content;
     this.webService.postMessage(this.message).toPromise().then(res => {
-      this.webService.emit<Message>(res);
-    });
+      const x = {
+        post_title : newMessageValue.post_title,
+        post_content : newMessageValue.post_content,
+        id : res,
+        creator_id : parseInt(localStorage.getItem('id')),
+        board_id : this.messageBoard
+      };
+      this.postError = false;
+      this.webService.emit<Message>(x);
+    })
+      .catch(err => {
+        this.postError = true;
+      });
   }
 
 

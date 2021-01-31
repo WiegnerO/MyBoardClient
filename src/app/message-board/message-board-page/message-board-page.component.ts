@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { WebForumService } from '../../services/web-forum.service'
 
 @Component({
   selector: 'app-message-board-page',
@@ -8,16 +9,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MessageBoardPageComponent implements OnInit {
 
-  public clickedEvent : Event;
-  public messageBoardName;
+  public clickedEvent: Event;
+  public messageBoard ;
+  public messageBoardName = this.route.snapshot.params['Bname'];
 
-  constructor(private route:ActivatedRoute) { }
+
+  constructor(private route: ActivatedRoute , private WebForum: WebForumService) { }
 
   ngOnInit(): void {
-    this.messageBoardName = this.route.snapshot.params['Bid'];
+    this.WebForum.getBoardID(this.messageBoardName).toPromise()
+    .then(res => {
+      this.messageBoard = res;
+      }
+    );
+
   }
 
-  childMessageEvent(event){
+  childMessageEvent(event): void{
     this.clickedEvent = event;
   }
 

@@ -1,20 +1,19 @@
-import { Identifiers } from '@angular/compiler';
+
 
 export class Message {
-    title: string = "";
-    content: string = "";
-    Mid: string = "";
-    Uid: string = "";
-    Bid: Identifiers = "";
+    public post_title: string;
+    public post_content: string;
+    public id: number;
+    public creator_id: number;
+    public board_id: number;
 
-    constructor(title ,content ,Mid , Bid){
-        this.title = title;
-        this.content = content;
-        this.Mid = Mid;
-        this.Uid = localStorage.getItem("id");
-        this.Bid = Bid;
+    constructor(board_id){
+        this.post_title = undefined;
+        this.post_content = undefined;
+        this.id = undefined;
+        this.creator_id = parseInt(localStorage.getItem("id"));
+        this.board_id = board_id;
     }
-    
 }
 
 

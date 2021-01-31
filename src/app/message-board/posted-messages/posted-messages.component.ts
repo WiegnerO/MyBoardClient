@@ -9,22 +9,20 @@ import { WebService } from 'src/app/services/web.service';
 })
 export class PostedMessagesComponent implements OnInit {
 
-  @Input() private messageBoard:string; 
-  messages : Message[] = [];
-  messageValue : Message;
+  @Input() private messageBoard;
+  messages: Message[] = [];
 
-  constructor(private webSevice : WebService) { }
+  constructor(private webSevice: WebService) { }
 
   ngOnInit(): void {
-      this.webSevice.getMessages(this.messageBoard).subscribe(res =>{
+      this.webSevice.getMessages(this.messageBoard).subscribe(res => {
       this.messages = res;
-    })
-    //This is used in order to append a new message to the message board
-    this.webSevice.on<Message>().subscribe(message => {
-      if(!!message["message"]){
-        this.messages.push(message["message"]);
-      }
-    })
+      });
+      this.webSevice.on<Message>().subscribe(message => {
+        if (!!message){
+          this.messages.push(message);
+        }
+      });
   }
 
 }

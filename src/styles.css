@@ -1,2 +1,21 @@
 /* Import the bootstrap css */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+.card-header-background{
+  background-color:	#DBE6E6;
+}
+
+.card-body-background{
+  background-color:	#f8ecf2;
+}
+
+.navbar-background{
+  background-color:	#CCE5FF;
+}
+
+.total-background{
+  height: 100vh;
+  background-color: #EFFBF8;
+}
+
+

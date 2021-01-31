@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../user.model';
 import { Router } from '@angular/router'
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,63 +14,61 @@ export class AuthenticationService {
   TOKEN_KEY = 'token'
   BASE_URL = 'http://localhost:5000/api/auth';
 
-    /**
+  /**
    * POST request to register a user in the system
-   * 
-   * @param message 
+   *
+   * @param message
    */
- registerUser(user) {
+ registerUser(user): void {
   this.http.post<User>(this.BASE_URL + '/register' , user ).subscribe(res =>{
     return this.authenticate(res);
   });
   }
 
-  isLoggedIn(){
+  isLoggedIn(): boolean{
     return !!localStorage.getItem('token');
   }
 
-  loginUser(user) {
-    this.http.post<User>(this.BASE_URL + '/login' , user ).subscribe(res =>{
-      return this.authenticate(res);
-    });
+  loginUser(user): Promise<any> {
+    return this.http.post<User>(this.BASE_URL + '/login' , user ).toPromise();
   }
 
-  logout(){ 
+  logout(): void{
     localStorage.removeItem(this.TOKEN_KEY);
     localStorage.removeItem(this.NAME_KEY);
     localStorage.removeItem(this.USER_ID_KEY);
   }
 
-  getUser(){
+  getUser(): Observable<User[]>{
     return this.http.get<User[]>(this.BASE_URL);
   }
 
-  authenticate(res){
-    var authResponse = res
-    if(authResponse.success == false){
-      return;
+  authenticate(res): any{
+    const authResponse = res;
+    if (authResponse.success === false){
+      return authResponse;
     }
     localStorage.setItem(this.TOKEN_KEY , authResponse.token);
     localStorage.setItem(this.NAME_KEY , authResponse.name);
     localStorage.setItem(this.USER_ID_KEY , authResponse.id);
-    let loggedInUser = new User(res.username , res.id , res.token);
+    const loggedInUser = new User(res.username , res.id , res.token);
     this.router.navigate(['/userpage']);
     return loggedInUser;
   }
 
-  get isAuthenticated(){
+  get isAuthenticated(): boolean{
     return !!localStorage.getItem(this.TOKEN_KEY);
   }
 
-  get name(){
+  get name(): string{
     return localStorage.getItem(this.NAME_KEY);
   }
 
-  get tokenHeader() : HttpHeaders{
-    var header = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem(this.TOKEN_KEY)});
+  get tokenHeader(): HttpHeaders{
+    const header = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem(this.TOKEN_KEY)});
     return header;
   }
 
-  constructor(private http: HttpClient , private router : Router) {
+  constructor(private http: HttpClient , private router: Router) {
   }
 }

@@ -1,3 +1,6 @@
 <h1>{{messageBoardName | titlecase}}</h1>
-<user-message [messageBoard]="messageBoardName"></user-message>
-<posted-messages [messageBoard]="messageBoardName"></posted-messages>
+<div [(ngModel)]="messageBoard" *ngIf="messageBoard">
+    <user-message [messageBoard]="messageBoard"></user-message>
+    <posted-messages [messageBoard]="messageBoard"></posted-messages>
+</div>
+<br>

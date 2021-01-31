@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication-service.service';
-import { User } from '../user.model';
+import { MustMatch } from '../services/passwordValidator.validator';
+import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register-page',
@@ -9,17 +10,47 @@ import { User } from '../user.model';
 })
 export class RegisterPageComponent implements OnInit {
 
-  newUser : any;
+  registerForm: FormGroup;
+  submitedArray: boolean[];
 
-  constructor( private authService : AuthenticationService) { }
+  constructor( private authService: AuthenticationService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.submitedArray = new Array(5).fill(false);
+    this.registerForm = this.fb.group({
+      username: ['', [Validators.required, Validators.minLength(6)]],
+      first_name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[a-zA-Z]*$')]],
+      last_name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[a-zA-Z]*$')]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required]
+    }, {
+      validator: MustMatch('password', 'confirmPassword')
+    });
   }
 
-  login(value) {
-    console.log("form value " + value)
-    console.log(value);
-    this.authService.registerUser(value);
+  get f(): any {
+    return this.registerForm.controls;
+  }
+
+  login(): void {
+    const newUser = {
+      password : this.registerForm.value.password,
+      last_name:  (this.registerForm.value.last_name).toLowerCase(),
+      first_name: (this.registerForm.value.first_name).toLowerCase(),
+      username: this.registerForm.value.username
+    };
+    if (this.registerForm.invalid) {
+      return;
+    }
+    this.authService.registerUser(newUser);
+  }
+
+  resetValue(value: number): void{
+    this.submitedArray[value] = false;
+  }
+
+  onClick(): void{
+    this.submitedArray.fill(true);
   }
 
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FrontPageComponent } from './front-page/front-page.component';
@@ -13,6 +13,10 @@ import { MessagesComponent } from './message-board/user-message/user-message.com
 import { MessageForumComponent } from './message-board/message/message.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostedMessagesComponent } from './message-board/posted-messages/posted-messages.component';
+import { AllBoardsComponent } from './all-boards/all-boards.component';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { UserProfileComponent } from './all-users/user-profile/user-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -25,14 +29,18 @@ import { PostedMessagesComponent } from './message-board/posted-messages/posted-
     MessageBoardPageComponent,
     MessagesComponent,
     MessageForumComponent,
-    PostedMessagesComponent
+    PostedMessagesComponent,
+    AllBoardsComponent,
+    AllUsersComponent,
+    UserProfileComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

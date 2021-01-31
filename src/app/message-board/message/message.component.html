@@ -1,15 +1,22 @@
 <div [hidden] = "isDeleted">
     <br>
     <div class="card">
-        <div class="card-body">
-            <div ng class="card-body">
-                <h5 class="card-title"> Title: {{userMesaage.title}}</h5>
-                <p class="card-text">{{userMesaage.content}}</p>
-                <p class="card-text">Mid {{userMesaage.Mid}}</p>
-                <p class="card-text">Uid {{userMesaage.Uid}}</p>
-                <p class="card-text">Bid {{userMesaage.Bid}}</p>
-                <button [hidden] = "isUsersPost()" type="button" class="btn btn-danger" (click)="remove()">Delete Post</button>
+        <div class="card-header d-flex card-header-background" >
+            <div class="mr-auto p-2">
+                <h4>{{userMesaage.post_title}}</h4>
             </div>
+            <div [hidden] = "!isUsersPost()">
+                Posted by: {{ userName }}
+            </div>
+          <div class="p-2">
+            <button class="justify-content-end" type="button" class="btn btn-primary" (click)="reply()">Reply</button>
+          </div>
+            <div class="p-2" [hidden] = "isUsersPost()">
+                <button class="justify-content-end" type="button" class="btn btn-danger" (click)="remove()">Delete Post</button>
+            </div>
+        </div>
+        <div ng class="card-body card-body-background" >
+            <p class="card-text">{{ userMesaage.post_content }}</p>
         </div>
     </div>
 </div>
