@@ -1,8 +1,8 @@
-# Myboard Stack
-This application is written using javascript (typescript), HTML and CSS while leveraging the Angular 9 framework and Bootstrap libraries. 
-
 # About MyBoard
 MyBoard is a web application allowing users to create message boards also known as MyBoards based on their favourite topics. In these boards users can share how they feel on these topics and comment on each other posts.
+
+# Myboard Stack
+This application is written using javascript (typescript), HTML and CSS while leveraging the Angular 9 framework and Bootstrap libraries. 
 
 # MyBoard functions
 This application allows users to: <br>
