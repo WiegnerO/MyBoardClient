@@ -3,6 +3,7 @@ import { Fourm } from '../fourm.model';
 import { WebForumService } from '../services/web-forum.service';
 import { AuthenticationService } from '../services/authentication-service.service';
 import { WebUserService } from '../services/web-user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-page',
@@ -23,7 +24,8 @@ export class UserPageComponent implements OnInit {
   newMyBoard: string;
   USER_MESSAGE = 'Write about yourself ';
 
-  constructor(private webBoardService: WebForumService, private authService: AuthenticationService, private webUserService: WebUserService){
+  constructor(private webBoardService: WebForumService, private router: Router,
+              private authService: AuthenticationService, private webUserService: WebUserService){
     this.user.userName = '';
     this.user.name = localStorage.getItem(this.authService.NAME_KEY);
     this.user.about_user = '';
@@ -41,6 +43,7 @@ export class UserPageComponent implements OnInit {
       .subscribe( (res) => {
         console.log(res);
         const newMyBoard = new Fourm(postedName , parseInt(this.authService.USER_ID_KEY) , res);
+        this.router.navigateByUrl('messageBoard/' + newMyBoard.board_name);
         this.MyBoards.push(newMyBoard);
       }, err => {
         console.log(err);
