@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Board } from '../model/board.model';
 import { AuthenticationService } from './authentication-service.service';
 import { Observable } from 'rxjs';
+import * as myGlobals from './globalVars';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class WebForumService {
 
-  BASE_URL = 'http://localhost:5000/api';
+  BASE_URL = myGlobals.BASE_URL;
 
 
   /**

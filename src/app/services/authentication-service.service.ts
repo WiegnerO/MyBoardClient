@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/user.model';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import {Observable} from 'rxjs';
+import * as myGlobals from './globalVars';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class AuthenticationService {
 
   NAME_KEY = 'name';
   USER_ID_KEY = 'id';
-  TOKEN_KEY = 'token'
-  BASE_URL = 'http://localhost:5000/api/auth';
+  TOKEN_KEY = 'token';
+  BASE_URL = myGlobals.BASE_URL;
 
   /**
    * POST request to register a user in the system

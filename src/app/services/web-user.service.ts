@@ -3,13 +3,14 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from './authentication-service.service';
 import {User} from '../model/user.model';
+import * as myGlobals from './globalVars';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebUserService {
 
-  BASE_URL = 'http://localhost:5000/api';
+  BASE_URL = myGlobals.BASE_URL;
 
   getMyBoardsUser(userId): Observable<User> {
     return this.http.post<User>(this.BASE_URL + '/user' , userId , {headers: this.auth.tokenHeader});

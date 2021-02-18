@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Message } from '../model/message.model';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { AuthenticationService } from './authentication-service.service';
+import * as myGlobals from './globalVars';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { AuthenticationService } from './authentication-service.service';
 })
 export class WebService {
 
-  BASE_URL = 'http://localhost:5000/api';
+  BASE_URL = myGlobals.BASE_URL;
 
   public _subject = new BehaviorSubject<any>('');
 
