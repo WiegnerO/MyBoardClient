@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Fourm } from '../model/fourm.model';
+import { Board } from '../model/board.model';
 import { WebForumService } from '../services/web-forum.service';
 import {AuthenticationService} from '../services/authentication-service.service';
 import {Router} from '@angular/router';
@@ -11,9 +11,9 @@ import {Router} from '@angular/router';
 })
 export class AllBoardsComponent implements OnInit {
 
-  MyBoards: Fourm[];
+  MyBoards: Board[];
 
-  specificBoards: Fourm[];
+  specificBoards: Board[];
 
   constructor(private webBoardService: WebForumService, private authService: AuthenticationService, private router: Router) { }
 
@@ -36,7 +36,7 @@ export class AllBoardsComponent implements OnInit {
     };
     this.webBoardService.postBoard(newMyBoardJSON)
       .subscribe( (res) => {
-        const newMyBoard = new Fourm(postedName , parseInt(localStorage.getItem(this.authService.id)) , res);
+        const newMyBoard = new Board(postedName , parseInt(localStorage.getItem(this.authService.id)) , res);
         this.router.navigateByUrl('messageBoard/' + newBoardName);
         this.MyBoards.push(newMyBoard);
       }, err => {

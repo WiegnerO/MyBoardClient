@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../model/user.model';
 import {WebUserService} from '../services/web-user.service';
 import { WebForumService } from '../services/web-forum.service';
-import {Fourm} from '../model/fourm.model';
+import {Board} from '../model/board.model';
 import {WebService} from '../services/web.service';
 import {Message} from '../model/message.model';
 
@@ -13,7 +13,7 @@ import {Message} from '../model/message.model';
 })
 export class AdminPageComponent implements OnInit {
   MyBoardUsers: User[];
-  MyBoards: Fourm[];
+  MyBoards: Board[];
   messages: Message[];
 
   constructor(private webUserService: WebUserService, private webBoardService: WebForumService, private webService: WebService) { }

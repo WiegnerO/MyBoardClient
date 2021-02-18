@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { User } from '../../model/user.model';
-import {Fourm} from '../../model/fourm.model';
+import {Board} from '../../model/board.model';
 import { WebForumService } from '../../services/web-forum.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { WebForumService } from '../../services/web-forum.service';
 })
 export class UserProfileComponent implements OnInit {
   @Input() user: User;
-  MyBoards: Fourm[];
+  MyBoards: Board[];
 
   constructor( private webBoardService: WebForumService ) { }
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Fourm } from '../model/fourm.model';
+import { Board } from '../model/board.model';
 import { AuthenticationService } from './authentication-service.service';
 import { Observable } from 'rxjs';
 
@@ -14,17 +14,17 @@ export class WebForumService {
 
 
   /**
-   * GET request to get all the users MyBoard fourm values
+   * GET request to get all the users MyBoard Board values
    */
-  getAllBoards(): Observable<Fourm[]> {
-    return this.http.get<Fourm[]>(this.BASE_URL + '/boards' , {headers: this.auth.tokenHeader});
+  getAllBoards(): Observable<Board[]> {
+    return this.http.get<Board[]>(this.BASE_URL + '/boards' , {headers: this.auth.tokenHeader});
   }
 
   /**
    * GET request to get all the users MyBoard fourm values
    */
-  getMyBoards(id): Observable<Fourm[]> {
-    return this.http.get<Fourm[]>(this.BASE_URL + '/user/' + id , {headers: this.auth.tokenHeader});
+  getMyBoards(id): Observable<Board[]> {
+    return this.http.get<Board[]>(this.BASE_URL + '/user/' + id , {headers: this.auth.tokenHeader});
   }
 
   /**

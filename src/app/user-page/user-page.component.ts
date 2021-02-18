@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Fourm } from '../model/fourm.model';
+import { Board } from '../model/board.model';
 import { WebForumService } from '../services/web-forum.service';
 import { AuthenticationService } from '../services/authentication-service.service';
 import { WebUserService } from '../services/web-user.service';
@@ -19,7 +19,7 @@ export class UserPageComponent implements OnInit {
   };
   userId;
 
-  MyBoards: Fourm[];
+  MyBoards: Board[];
   toggle = true;
   newMyBoard: string;
   USER_MESSAGE = 'Write about yourself ';
@@ -32,7 +32,7 @@ export class UserPageComponent implements OnInit {
   }
 
   /**
-   * Lets you add a new MyBoard fourm page
+   * Lets you add a new MyBoard Board page
    */
   createNewMyBoard(): void {
       const postedName = this.newMyBoard.toLocaleLowerCase();
@@ -42,7 +42,7 @@ export class UserPageComponent implements OnInit {
       this.webBoardService.postBoard(newMyBoardJSON)
       .subscribe( (res) => {
         console.log(res);
-        const newMyBoard = new Fourm(postedName , parseInt(this.authService.USER_ID_KEY) , res);
+        const newMyBoard = new Board(postedName , parseInt(this.authService.USER_ID_KEY) , res);
         this.router.navigateByUrl('messageBoard/' + newMyBoard.board_name);
         this.MyBoards.push(newMyBoard);
       }, err => {

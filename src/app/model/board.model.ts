@@ -1,4 +1,4 @@
-export class Fourm {
+export class Board {
     id : any;
     board_name : string;
     creator_id : number;
