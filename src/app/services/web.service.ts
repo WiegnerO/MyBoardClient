@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Fourm } from '../fourm.model';
 import { Message } from '../message.model';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { AuthenticationService } from './authentication-service.service'
+import { AuthenticationService } from './authentication-service.service';
 
 
 @Injectable({
