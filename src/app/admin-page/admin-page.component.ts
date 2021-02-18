@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../user.model';
+import {User} from '../model/user.model';
 import {WebUserService} from '../services/web-user.service';
 import { WebForumService } from '../services/web-forum.service';
-import {Fourm} from '../fourm.model';
+import {Fourm} from '../model/fourm.model';
 import {WebService} from '../services/web.service';
-import {Message} from '../message.model';
+import {Message} from '../model/message.model';
 
 @Component({
   selector: 'app-admin-page',

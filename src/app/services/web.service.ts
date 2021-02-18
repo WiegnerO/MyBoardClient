@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '../message.model';
+import { Message } from '../model/message.model';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { AuthenticationService } from './authentication-service.service';
 

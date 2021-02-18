@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { User } from '../../user.model';
-import {Fourm} from '../../fourm.model';
+import { User } from '../../model/user.model';
+import {Fourm} from '../../model/fourm.model';
 import { WebForumService } from '../../services/web-forum.service';
 
 @Component({

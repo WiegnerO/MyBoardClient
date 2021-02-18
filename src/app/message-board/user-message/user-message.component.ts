@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Message } from '../../message.model';
+import { Message } from '../../model/message.model';
 import { WebService } from '../../services/web.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 

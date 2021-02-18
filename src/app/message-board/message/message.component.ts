@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Message } from '../../message.model';
+import { Message } from '../../model/message.model';
 import { WebService } from '../../services/web.service';
 import { AuthenticationService } from '../../services/authentication-service.service';
 import { WebUserService } from '../../services/web-user.service';

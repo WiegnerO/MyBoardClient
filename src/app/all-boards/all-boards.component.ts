@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Fourm } from '../fourm.model';
+import { Fourm } from '../model/fourm.model';
 import { WebForumService } from '../services/web-forum.service';
 import {AuthenticationService} from '../services/authentication-service.service';
 import {Router} from '@angular/router';

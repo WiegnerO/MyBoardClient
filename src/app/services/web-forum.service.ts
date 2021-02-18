@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Fourm } from '../fourm.model';
+import { Fourm } from '../model/fourm.model';
 import { AuthenticationService } from './authentication-service.service';
 import { Observable } from 'rxjs';
 
