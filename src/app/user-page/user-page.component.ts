@@ -4,6 +4,7 @@ import { WebForumService } from '../services/web-forum.service';
 import { AuthenticationService } from '../services/authentication-service.service';
 import { WebUserService } from '../services/web-user.service';
 import {Router} from '@angular/router';
+import * as myGlobals from '../services/globalVars';
 
 @Component({
   selector: 'app-user-page',
@@ -18,7 +19,6 @@ export class UserPageComponent implements OnInit {
     about_user : ''
   };
   userId;
-
   MyBoards: Board[];
   toggle = true;
   newMyBoard: string;
@@ -31,23 +31,26 @@ export class UserPageComponent implements OnInit {
     this.user.about_user = '';
   }
 
-  /**
-   * Lets you add a new MyBoard Board page
-   */
   createNewMyBoard(): void {
       const postedName = this.newMyBoard.toLocaleLowerCase();
-      const newMyBoardJSON = {
-        board_name: postedName,
-        creator_id: parseInt(localStorage.getItem(this.authService.USER_ID_KEY))};
-      this.webBoardService.postBoard(newMyBoardJSON)
-      .subscribe( (res) => {
-        console.log(res);
-        const newMyBoard = new Board(postedName , parseInt(this.authService.USER_ID_KEY) , res);
-        this.router.navigateByUrl('messageBoard/' + newMyBoard.board_name);
-        this.MyBoards.push(newMyBoard);
-      }, err => {
-        console.log(err);
-      });
+      if (!postedName.match(myGlobals.LETTERS)) {
+        alert('Please input alphabet characters only');
+        this.newMyBoard = '';
+      }
+      else {
+        const newMyBoardJSON = {
+          board_name: postedName,
+          creator_id: parseInt(localStorage.getItem(this.authService.USER_ID_KEY))};
+        this.webBoardService.postBoard(newMyBoardJSON)
+          .subscribe( (res) => {
+            console.log(res);
+            const newMyBoard = new Board(postedName , parseInt(this.authService.USER_ID_KEY) , res);
+            this.router.navigateByUrl('messageBoard/' + newMyBoard.board_name);
+            this.MyBoards.push(newMyBoard);
+          }, err => {
+            alert('This MyBoard is already created');
+          });
+      }
   }
 
   updateProfile(): void{

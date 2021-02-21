@@ -13,7 +13,7 @@ export class AuthenticationService {
   NAME_KEY = 'name';
   USER_ID_KEY = 'id';
   TOKEN_KEY = 'token';
-  BASE_URL = myGlobals.BASE_URL;
+  BASE_URL = myGlobals.BASE_URL + '/auth';
 
   /**
    * POST request to register a user in the system

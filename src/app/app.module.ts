@@ -17,6 +17,7 @@ import { AllBoardsComponent } from './all-boards/all-boards.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { UserProfileComponent } from './all-users/user-profile/user-profile.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { PostRateComponent } from './message-board/post-rate/post-rate.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     AllUsersComponent,
     UserProfileComponent,
     AdminPageComponent,
+    PostRateComponent,
   ],
     imports: [
         BrowserModule,

@@ -1,8 +1,8 @@
 <div [hidden] = "isDeleted">
     <br>
     <div class="card">
-        <div class="card-header d-flex card-header-background" >
-            <div class="mr-auto p-2" style="padding-top: 12px">
+        <div class="card-header d-flex card-header-background">
+            <div class="mr-auto p-2 w-75" style="padding-top: 12px">
                 <h6>{{userMesaage.post_title}}</h6>
             </div>
             <div [hidden] = "!isUsersPost()" style="padding-top: 12px">
@@ -15,15 +15,18 @@
                 <button class="justify-content-end" type="button" class="btn btn-danger btn-sm" (click)="remove()">Delete Post</button>
             </div>
         </div>
-        <div ng class="card-body card-body-background" >
+        <div ng class="card-body d-flex card-body-background">
+          <div class="mr-auto p-2 col-md-11">
             <p class="card-text">{{ userMesaage.post_content }}</p>
+          </div>
+          <div class="align-items-end">
+            <post-rate [userMesaage]=userMesaage ></post-rate>
+          </div>
         </div>
     </div>
   <div *ngIf="replyBox" style="padding-left: 50px;">
     <br>
     <div ng class="card-body card-body-background">
-
-
       <div class="container-fluid">
         <div class="row">
           <div style="padding-top: 12px">

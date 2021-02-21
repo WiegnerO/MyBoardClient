@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WebForumService } from '../../services/web-forum.service'
+import { WebForumService } from '../../services/web-forum.service';
 
 @Component({
   selector: 'app-message-board-page',
