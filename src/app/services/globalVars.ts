@@ -2,4 +2,4 @@
 'use strict';
 
 export const BASE_URL = 'http://localhost:5000/api';
-export const LETTERS = /^[A-Za-z0-9]+$/;
+export const LETTERS = /^[A-Za-z0-9 ]+$/;

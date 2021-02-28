@@ -10,7 +10,7 @@
             <b>About {{user.first_name | titlecase}} : </b>
             <span *ngIf="user.about_user; else elseBlock">{{user.about_user}}</span>
             <ng-template #elseBlock>
-              <span>User does not have a bio</span>
+              <span>{{user.first_name | titlecase}} does not have a bio</span>
             </ng-template>
             <br>
             <br>
