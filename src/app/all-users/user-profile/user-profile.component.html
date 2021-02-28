@@ -6,8 +6,12 @@
     <div class="card-body card-body-background h-100">
       <div class="row">
         <div style="padding-left: 10px;">
-          <div *ngIf="user.about_user">
-            <b>About {{user.first_name | titlecase}} : </b> <span> &nbsp; {{user.about_user}}</span>
+          <div>
+            <b>About {{user.first_name | titlecase}} : </b>
+            <span *ngIf="user.about_user; else elseBlock">{{user.about_user}}</span>
+            <ng-template #elseBlock>
+              <span>User does not have a bio</span>
+            </ng-template>
             <br>
             <br>
           </div>

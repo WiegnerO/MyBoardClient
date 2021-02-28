@@ -16,7 +16,6 @@ export class MessageForumComponent implements OnInit {
   userName;
   replyMessages: Message[];
   replyBox = false;
-  buttonText = 'Reply';
   replyMessageValue: Message;
   replyTitle;
   replyContent;
@@ -37,6 +36,7 @@ export class MessageForumComponent implements OnInit {
       this.replyMessages.push(this.replyMessageValue);
       this.replyBox = ! this.replyBox;
       this.replyMessageValue = new Message(this.userMesaage.board_id , this.userMesaage.id);
+      this.replyContent = '';
     });
   }
 

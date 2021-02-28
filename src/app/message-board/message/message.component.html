@@ -9,7 +9,9 @@
                 Posted by: {{ userName }}
             </div>
           <div class="p-2">
-            <button class="justify-content-end" type="button" class="btn btn-primary btn-sm" (click)="Openreply()">{{buttonText}}</button>
+            <button class="justify-content-end" type="button"
+                    class="btn btn-primary btn-sm" (click)="Openreply()"
+                    [innerHTML]='!replyBox ? "Reply" : "Nevermind"'></button>
           </div>
             <div class="p-2" [hidden] = "isUsersPost()">
                 <button class="justify-content-end" type="button" class="btn btn-danger btn-sm" (click)="remove()">Delete Post</button>

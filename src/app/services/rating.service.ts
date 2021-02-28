@@ -32,10 +32,10 @@ export class RatingService {
 }
 
 export class Rate {
-  creator_id : number;
+  rater_id : number;
   message_id : number;
-  constructor(creator_id: number , message_id: number){
-    this.creator_id = creator_id;
+  constructor(rater_id: number , message_id: number){
+    this.rater_id = rater_id;
     this.message_id = message_id;
   }
 }

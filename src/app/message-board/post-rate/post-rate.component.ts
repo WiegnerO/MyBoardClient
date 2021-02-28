@@ -14,12 +14,12 @@ export class PostRateComponent implements OnInit {
   unratedLink = '../../../assets/heart.png';
   heartImageLink = null;
   rated = false;
-  rateValue;
+  rateValue: number;
 
   constructor(private ratingService: RatingService) { }
 
   ngOnInit(): void {
-    this.getRateValue();
+    this.rateValue = this.userMesaage.rates;
     this.isRated();
   }
 

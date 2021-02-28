@@ -41,7 +41,8 @@ export class MessagesComponent implements OnInit {
         id : res,
         creator_id : parseInt(localStorage.getItem('id')),
         board_id : this.messageBoard,
-        parent_message : null
+        parent_message : null,
+        rates: 1
       };
       this.postError = false;
       this.webService.emit<Message>(x);
