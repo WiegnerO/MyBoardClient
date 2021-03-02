@@ -1,22 +1,25 @@
 <div>
   <div class="">
     <div class="text-center card-header card-header-background">
-      <h5>User : {{user.username | titlecase}}</h5>
+      <h5>{{user.username | titlecase}}</h5>
     </div>
     <div class="card-body card-body-background h-100">
       <div class="row">
-        <div style="padding-left: 10px;">
-          <div>
-            <b>About {{user.first_name | titlecase}} : </b>
+        <div class="block text-center">
+          <img src={{profilePic}}>
+          <br>
+          <br>
+          <div class="text-center">
+            <h6>About {{user.first_name | titlecase}} : </h6>
             <span *ngIf="user.about_user; else elseBlock">{{user.about_user}}</span>
             <ng-template #elseBlock>
               <span>{{user.first_name | titlecase}} does not have a bio</span>
             </ng-template>
             <br>
             <br>
-          </div>
-          <div *ngIf="MyBoards.length > 0">
-            <b>{{user.first_name | titlecase}}'s MyBoards : </b>
+        </div>
+          <div *ngIf="MyBoards && MyBoards.length > 0">
+            <h6>{{user.first_name | titlecase}}'s MyBoards : </h6>
             <div class="container-fluid d-flex flex-wrap">
               <div *ngFor="let board of MyBoards" style="padding: 2.5px;">
                 <button routerLink="/messageBoard/{{board.board_name}}" class="btn btn-sm"

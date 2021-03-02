@@ -4,19 +4,24 @@
         <div class="col-sm-6 py-2">
           <div class="card h-100">
             <div class="text-center card-header card-header-background">
-              <h3>User Info</h3>
+              <h3>{{user.userName}}'s Profile</h3>
             </div>
-            <div class="card-body card-body-background">
-              <div>
-                <h6>UserName : </h6> {{user.userName}}
-              </div>
+            <div class="card-body card-body-background text-center pad">
+                  <img src={{profilePic}}>
+                  <br>
+                  <br>
+                  <div enctype="multipart/form-data">
+                    <input type="file" name="pic" id="file" class="file"
+                           data-browse-on-zone-click="true"
+                           accept="image/jpg, image/jpeg, image/png" (change)="onFileSelect($event)">
+                  </div>
               <br>
-              <div>
-                <h6>Name : </h6> {{user.name | titlecase}}
-              </div>
+                  <div>
+                    <span><b>Name :</b> {{user.name | titlecase}}</span>
+                  </div>
               <br>
-              <div>
-                <h6>About Me : </h6>
+              <div class="pad2">
+                <h6>About {{user.first_name}} : </h6>
                 <div *ngIf="toggle" (click)="toggler()">
                   {{user.about_user}}
                 </div>

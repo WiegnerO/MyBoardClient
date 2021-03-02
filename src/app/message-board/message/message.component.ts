@@ -33,6 +33,7 @@ export class MessageForumComponent implements OnInit {
     this.replyMessageValue.post_content = this.replyContent;
     this.webService.postMessage(this.replyMessageValue).toPromise().then((res) => {
       this.replyMessageValue.id = res;
+      this.replyMessageValue.rates = 1;
       this.replyMessages.push(this.replyMessageValue);
       this.replyBox = ! this.replyBox;
       this.replyMessageValue = new Message(this.userMesaage.board_id , this.userMesaage.id);
