@@ -1,22 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-background">
   <div class="collapse navbar-collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarNav">
     <ul class="navbar-nav mr-auto">
-      <li  *ngIf="!(AS.isAuthenticated)">
+      <li  *ngIf="!(AS.isLoggedIn())">
         <a class="nav-item nav-link" href="registerPage">Register<span class="sr-only"></span></a>
       </li>
-      <li *ngIf="!(AS.isAuthenticated)">
+      <li *ngIf="!(AS.isLoggedIn())">
         <a class="nav-item nav-link" href="loginPage">Login<span class="sr-only"></span></a>
       </li>
-      <li *ngIf="(AS.isAuthenticated)">
+      <li *ngIf="(AS.isLoggedIn())">
         <a class="nav-item nav-link" href="userpage">Profile<span class="sr-only"></span></a>
       </li>
-      <li *ngIf="(AS.isAuthenticated)">
+      <li *ngIf="(AS.isLoggedIn())">
         <a class="nav-item nav-link" href="messageBoard">MyBoards<span class="sr-only"></span></a>
       </li>
-      <li *ngIf="(AS.isAuthenticated)">
+      <li *ngIf="(AS.isLoggedIn())">
         <a class="nav-item nav-link" href="allUsers">Users<span class="sr-only"></span></a>
       </li>
-      <li *ngIf="(AS.isAuthenticated)">
+      <li *ngIf="(AS.isLoggedIn())">
         <a class="nav-item nav-link" href="loginPage" (click)="logout()">Logout<span class="sr-only"></span></a>
       </li>
     </ul>

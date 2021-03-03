@@ -31,5 +31,6 @@ export class WebUserService {
   updateUserProfilePic(profilePic, userId): Observable<any>{
     return this.http.patch<User>(this.BASE_URL + '/user/picture/' + userId , profilePic, {headers: this.auth.tokenHeader});
   }
+
   constructor( private http: HttpClient, private auth: AuthenticationService ) { }
 }

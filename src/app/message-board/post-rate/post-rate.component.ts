@@ -11,7 +11,7 @@ export class PostRateComponent implements OnInit {
 
   @Input() userMesaage: Message;
   ratedLink = '../../../assets/heart.jpg';
-  unratedLink = '../../../assets/heart.png';
+  unratedLink = '../../../assets/heartOff.jpg';
   heartImageLink = null;
   rated = false;
   rateValue: number;

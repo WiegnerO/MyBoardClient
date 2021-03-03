@@ -9,7 +9,7 @@ export class RouteGaurdAdminService {
 
   canActivate(): boolean {
     if (this.auth.isLoggedIn()) {
-      if (this.auth.id === '1'){
+      if (localStorage.getItem(this.auth.USER_ID_KEY) === '1'){
         return true;
       }
     }else{

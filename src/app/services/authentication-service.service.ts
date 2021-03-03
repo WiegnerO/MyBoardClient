@@ -57,10 +57,6 @@ export class AuthenticationService {
     return loggedInUser;
   }
 
-  get isAuthenticated(): boolean{
-    return !!localStorage.getItem(this.TOKEN_KEY);
-  }
-
   get name(): string{
     return localStorage.getItem(this.NAME_KEY);
   }
@@ -69,7 +65,7 @@ export class AuthenticationService {
   }
 
   get tokenHeader(): HttpHeaders{
-    const header = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem(this.TOKEN_KEY)});
+    const header = new HttpHeaders({Authorization:  localStorage.getItem(this.TOKEN_KEY)});
     return header;
   }
 
