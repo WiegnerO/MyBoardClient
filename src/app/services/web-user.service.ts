@@ -32,5 +32,9 @@ export class WebUserService {
     return this.http.patch<User>(this.BASE_URL + '/user/picture/' + userId , profilePic, {headers: this.auth.tokenHeader});
   }
 
+  getUser(userId) {
+    return this.http.get(this.BASE_URL + '/user/picture/' + userId, {headers: this.auth.tokenHeader});
+  }
+
   constructor( private http: HttpClient, private auth: AuthenticationService ) { }
 }

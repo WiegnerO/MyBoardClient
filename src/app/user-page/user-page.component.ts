@@ -101,14 +101,6 @@ export class UserPageComponent implements OnInit {
     }
   }
 
-  // onFileSelect(): void{
-  //   const imageBlob = this.fileInput.nativeElement.files[0];
-  //   const file = new FormData();
-  //   file.set('file', imageBlob);
-  //   this.webUserService.updateUserProfilePic(file, localStorage.getItem('id'));
-  // }
-
-
   /**
    * Current retrives all MyBoard foumr pages but will only retrive the MyBoard fourm page that the user has created or commented on
    */
