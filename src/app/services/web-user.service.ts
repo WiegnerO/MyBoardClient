@@ -25,7 +25,7 @@ export class WebUserService {
   }
 
   deleteUser(userID): Observable<any> {
-    return this.http.delete(this.BASE_URL + '/auth/' + userID , {headers: this.auth.tokenHeader});
+    return this.http.delete<any>(this.BASE_URL + '/auth/' + userID );
   }
 
   updateUserProfilePic(profilePic, userId): Observable<any>{

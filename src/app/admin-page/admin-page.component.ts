@@ -33,7 +33,8 @@ export class AdminPageComponent implements OnInit {
 
   deleteUser(user): void {
     console.log(user.id);
-    this.webUserService.deleteUser(user.id);
+    this.webUserService.deleteUser(user.id).toPromise()
+      .then(res => console.log(res));
   }
 
   ngOnInit(): void {
