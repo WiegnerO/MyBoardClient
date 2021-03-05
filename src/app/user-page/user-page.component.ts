@@ -115,8 +115,13 @@ export class UserPageComponent implements OnInit {
       this.user.userName = res[0].username;
       this.user.about_user = res[0].about_user === null || res[0].about_user === '' ? this.USER_MESSAGE : res[0].about_user;
       this.user.first_name = res[0].first_name;
-      this.profilePic = (res[0].profile_picture ?
-        myGlobals.BASE_URL + '/user/picture/' + localStorage.getItem(this.authService.USER_ID_KEY) : this.defaultProfilePic);
+      this.webUserService.getUserPicture(localStorage.getItem(this.authService.USER_ID_KEY)).toPromise()
+        .then(() => {
+          this.profilePic = myGlobals.BASE_URL + '/user/picture/' + localStorage.getItem(this.authService.USER_ID_KEY);
+        })
+        .catch((err) => {
+          this.profilePic = this.defaultProfilePic;
+        });
     });
   }
 
