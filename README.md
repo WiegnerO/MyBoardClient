@@ -8,12 +8,14 @@ This application is written using javascript (typescript), HTML and CSS while le
 This application allows users to: <br>
 - Login and register an account
 - Create and update their user personal user profile
+- Add and update a user profile picture
 - Create and delete new MyBoards 
 - Search new MyBoard pages
 - Search MyBoard users
-- Post, delete and update MyBoard message posts
-- Post, delete and update MyBoard message posts replies
-- Give admin the right to delete other users posts/boards/profiles if they see if
+- Post, delete MyBoard message posts
+- Post, delete MyBoard message posts replies
+- Rate/unrate a post
+- Give admin the right to delete other users posts/boards/profiles if they see fir
 
 # Installation
 ## Requirements
