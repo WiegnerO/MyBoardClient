@@ -16,6 +16,7 @@
           <div *ngIf="submitedArray[0] && f.username.errors" class="invalid-feedback">
             <div *ngIf="f.username.errors.required">Username is required </div>
             <div *ngIf="f.username.errors.minlength">Username must be at least 6 characters long</div>
+            <div *ngIf="f.username.errors.pattern">Username can only contain alphabetic numeric characters</div>
           </div>
         </div>
 
