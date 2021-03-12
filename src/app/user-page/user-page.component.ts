@@ -25,7 +25,7 @@ export class UserPageComponent implements OnInit {
   newMyBoard: string;
   USER_MESSAGE = 'Write about yourself ';
   profilePic = null;
-  defaultProfilePic = '../../assets/defaultProfile.png';
+  defaultProfilePic = '../../../docs/assets/defaultProfile.png';
 
   constructor(private webBoardService: WebForumService, private router: Router,
               private authService: AuthenticationService, private webUserService: WebUserService){

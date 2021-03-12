@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   @Input() user: User;
   MyBoards: Board[];
   profilePic = null;
-  defaultProfilePic = '../../assets/defaultProfile.png';
+  defaultProfilePic = '../../../../docs/assets/defaultProfile.png';
 
   constructor( private webBoardService: WebForumService,
                private webUserService: WebUserService,
