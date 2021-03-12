@@ -23,7 +23,8 @@ const routes: Routes = [
   {path : 'messageBoard', canActivate: [RouteGuardServiceLoggedIn], component : AllBoardsComponent},
   {path : 'messageBoard/:Bname', canActivate: [RouteGuardServiceLoggedIn], component : MessageBoardPageComponent},
   {path : 'allUsers', canActivate: [RouteGuardServiceLoggedIn], component : AllUsersComponent},
-  {path : 'admin', canActivate: [RouteGuardServiceLoggedIn, RouteGaurdAdminService], component : AdminPageComponent}
+  {path : 'admin', canActivate: [RouteGuardServiceLoggedIn, RouteGaurdAdminService], component : AdminPageComponent},
+  {path : '**' , redirectTo : homePage , pathMatch : 'full'}
 ];
 
 @NgModule({
