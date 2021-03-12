@@ -10,8 +10,8 @@ import { RatingService } from '../../services/rating.service';
 export class PostRateComponent implements OnInit {
 
   @Input() userMesaage: Message;
-  ratedLink = '../../../assets/heart.jpg';
-  unratedLink = '../../../assets/heartOff.jpg';
+  ratedLink = '../../../../docs/assets/assets/heart.jpg';
+  unratedLink = '../../../../docs/assets/heartOff.jpg';
   heartImageLink = null;
   rated = false;
   rateValue: number;
