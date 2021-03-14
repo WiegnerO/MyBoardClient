@@ -42,7 +42,7 @@ export class AllBoardsComponent implements OnInit {
       this.webBoardService.postBoard(newMyBoardJSON)
         .subscribe( (res) => {
           const newMyBoard = new Board(postedName , parseInt(localStorage.getItem(this.authService.id)) , res);
-          this.router.navigateByUrl('messageBoard/' + newBoardName);
+          this.router.navigateByUrl('messageBoard/' + postedName);
           this.MyBoards.push(newMyBoard);
         }, err => {
           alert('This MyBoard is already created');
